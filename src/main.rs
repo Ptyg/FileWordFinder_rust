@@ -1,17 +1,33 @@
+use std::{path::Path, env};
+
+use lib::{Args, find_in_dir};
 use structopt::StructOpt;
 
-#[derive(Debug, StructOpt)]
-struct Args {
-    #[structopt(short, long, requires="word")]
-    path: String,
-
-    #[structopt(short, long, requires="path")]
-    word: String,
-
-    #[structopt(short="t", long)]
-    filetype: Option<String>
-}
-
 fn main() {
-    
+    let args = Args::from_args();
+
+    if env::args().len() == 1 {
+        Args::clap().print_help().unwrap();
+        return;
+    }    
+
+    let result = match args.filetype {
+        Some(file_type) => {
+            find_in_dir(Path::new(&args.path.unwrap()), &args.word.unwrap(), &Some(file_type))
+        },
+        None => {
+            find_in_dir(Path::new(&args.path.unwrap()), &args.word.unwrap(), &None)
+        },
+    };
+
+    match result {
+        Some(results) => {
+            for i in &results {
+                for j in i {
+                    println!("{:?}", j);
+                }
+            }
+        },
+        None => {}
+    }
 }
