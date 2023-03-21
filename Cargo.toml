@@ -7,3 +7,11 @@ edition = "2021"
 
 [dependencies]
 structopt = "0.3.26"
+
+[lib]
+name = "lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "finder"
+path = "src/main.rs"
