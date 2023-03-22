@@ -26,7 +26,7 @@ mod tests {
             line: 0,
         }]);
         
-        let result = find_in_file(&file_path, &search_word);
+        let result = find_in_file(file_path, &search_word);
 
         assert_eq!(result.is_some(), expected.is_some());
         assert_eq!(result.unwrap().len(), expected.unwrap().len());
@@ -38,8 +38,8 @@ mod tests {
         pathbuf.push("txt_not_exists.txt");
         let file_path = pathbuf.as_path();
         let search_word = String::from("sun");
-        let result = find_in_file(&file_path, &search_word);
-        assert_eq!(result.is_none(), true);
+        let result = find_in_file(file_path, &search_word);
+        assert!(result.is_none());
     }
 
     #[test]
@@ -48,8 +48,8 @@ mod tests {
         pathbuf.push("txt_1.txt");
         let file_path = pathbuf.as_path();
         let search_word = String::from("sun_that_not_exists");
-        let result = find_in_file(&file_path, &search_word);
-        assert_eq!(result.is_some(), true);
+        let result = find_in_file(file_path, &search_word);
+        assert!(result.is_some());
     }
 
     #[test]
@@ -70,7 +70,7 @@ mod tests {
                 line: 0,
             }],
         ]);
-        let result = find_in_dir(&dir_path, &search_word, &file_ext);
+        let result = find_in_dir(dir_path, &search_word, &file_ext);
         assert_eq!(result.is_some(), expected.is_some());
         assert_eq!(result.unwrap().len(), expected.unwrap().len());
     }
@@ -82,8 +82,8 @@ mod tests {
         let dir_path = binding.as_path();
         let search_word = String::from("sun");
         let file_ext = Some("txt".to_string());
-        let result = find_in_dir(&dir_path, &search_word, &file_ext);
-        assert_eq!(result.is_none(), true);
+        let result = find_in_dir(dir_path, &search_word, &file_ext);
+        assert!(result.is_none());
     }    
 
 }

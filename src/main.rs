@@ -20,14 +20,11 @@ fn main() {
         },
     };
 
-    match result {
-        Some(results) => {
-            for i in &results {
-                for j in i {
-                    println!("{:?}", j);
-                }
+    if let Some(results) = result {
+        for i in &results {
+            for j in i {
+                println!("{:?}", j);
             }
-        },
-        None => {}
+        }
     }
 }

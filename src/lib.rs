@@ -55,35 +55,31 @@ pub fn find_in_dir(path: &Path, word: &String, file_ext: &Option<String>) -> Opt
     let mut results = Vec::new();
 
     if !path.is_dir() {
-        match find_in_file(&path, &word) {
+        match find_in_file(path, word) {
             Some(curr_res) => {
                 results.push(curr_res);
             },
             None => {return None;}
         }
+        
     }
 
-    for entry in fs::read_dir(path).unwrap() {
-        if let Ok(entry) = entry {
-            let path = entry.path();
-            if !path.is_file() {continue;}
+    for entry in fs::read_dir(path).unwrap().flatten() {
+        let curr_path = entry.path();
+        if !curr_path.is_file() {continue;}
 
-            let curr_file_ext = path.extension()
-                .and_then(|ext| ext.to_str())
-                .unwrap_or("");
+        let curr_file_ext = curr_path.extension()
+            .and_then(|ext| ext.to_str())
+            .unwrap_or("");
 
-            if let Some(ref file_ext) = file_ext {
-                if curr_file_ext != file_ext {
-                    continue;
-                }
+        if let Some(ref file_ext) = file_ext {
+            if curr_file_ext != file_ext {
+                continue;
             }
+        }
 
-            match find_in_file(&path, &word) {
-                Some(cur_res) => {
-                    results.push(cur_res);
-                },
-                None => {},
-            }
+        if let Some(cur_res) = find_in_file(&curr_path, word) {
+            results.push(cur_res);
         }
     }
     Some(results)
