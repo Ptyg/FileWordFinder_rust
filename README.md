@@ -91,12 +91,6 @@ finder hello /home/user/Documents/myFile.txt
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Contributing
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request.
@@ -108,3 +102,10 @@ If you have a suggestion that would make this better, please fork the repo and c
 5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
