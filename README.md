@@ -15,6 +15,13 @@
 </div>
 
 <p align="center">
+  <img src="https://github.com/Ptyg/FileWordFinder_rust/actions/workflows/check.yml/badge.svg">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Rust-%23900000.svg?style=flat&logo=rust&logoColor=white">
+  <img src="https://img.shields.io/badge/Windows-1078D6?style=flat&logo=windows&logoColor=white">
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black">
 </p>
 
 <details>
@@ -33,7 +40,6 @@
 </details>
 
 ## About The Project
-
 Utility that searches for a specific word in all files in directory, or you can just put a path to file - this also works.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
